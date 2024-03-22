@@ -12,6 +12,7 @@
       2,
       "single"
     ],
+    "linebreak-style": ["error", "windows"],
     "no-else-return": 0,
     "new-cap": [
       "error",
