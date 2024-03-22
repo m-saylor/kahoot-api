@@ -42,7 +42,7 @@ router.post('/rooms/:id', async (req, res) => {
   const roomId = req.params.id;
   const playerInfo = req.body;
 
-  // fill in try/catch that handles calling the appropriate Rooms function
+  // try/catch that handles calling the appropriate Rooms function
   // returns a response, see `create a room` above
   try {
     const result = await Rooms.joinRoom(roomId, playerInfo);
@@ -57,8 +57,14 @@ router.patch('/rooms/:id', async (req, res) => {
   const roomId = req.params.id;
   const { roomKey, status } = req.body;
 
-  // fill in try/catch that handles calling the appropriate Rooms function
+  // try/catch that handles calling the appropriate Rooms function
   // returns a response, see `create a room` above
+  try {
+    const result = await Rooms.changeStatus(roomId, roomKey, status);
+    return res.json(result);
+  } catch (error) {
+    return res.status(422).json({ error: error.message });
+  }
 });
 
 // submit a response
@@ -68,6 +74,12 @@ router.post('/rooms/:id/submissions', async (req, res) => {
 
   // fill in try/catch that handles calling the appropriate Rooms function
   // returns a response, see `create a room` above
+  try {
+    const result = await Rooms.submitAnswer(roomId, player, response);
+    return res.json(result);
+  } catch (error) {
+    return res.status(422).json({ error: error.message });
+  }
 });
 
 export default router;
