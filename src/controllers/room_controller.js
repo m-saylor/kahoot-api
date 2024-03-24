@@ -43,7 +43,7 @@ export async function changeStatus(roomId, roomKey, status) {
   if (status in RoomStates) {
     room.status = status;
   } else {
-    throw new Error(`Invalid status. Must be ${RoomStates.CLOSED}, ${RoomStates.OPEN}, ${RoomStates.IN_PROGRESS} or ${RoomStates.GAME_OVER}`);
+    throw new Error(`Status: ${status} is invalid. Must be ${RoomStates.CLOSED}, ${RoomStates.OPEN}, ${RoomStates.IN_PROGRESS} or ${RoomStates.GAME_OVER}`);
   }
 
   return room.save();

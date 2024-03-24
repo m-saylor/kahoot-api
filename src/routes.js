@@ -14,6 +14,8 @@ router.get('/', (req, res) => {
 router.post('/rooms', async (req, res) => {
   const roomInitInfo = req.body;
 
+  console.log(req.body);
+
   try {
     const result = await Rooms.createRoom(roomInitInfo);
     return res.json(result);
@@ -56,6 +58,8 @@ router.post('/rooms/:id', async (req, res) => {
 router.patch('/rooms/:id', async (req, res) => {
   const roomId = req.params.id;
   const { roomKey, status } = req.body;
+
+  console.log(req);
 
   // try/catch that handles calling the appropriate Rooms function
   // returns a response, see `create a room` above

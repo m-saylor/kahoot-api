@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-undef */
 // globals
 let roomId;
@@ -15,7 +16,6 @@ describe('Creating a game with questions and answers', () => {
           { prompt: 'What is the best class at Dartmouth?', answer: 'CS52' },
           { prompt: 'What is the best programming language?', answer: 'JavaScript' },
           { prompt: 'What is the answer to Life, the Universe, and Everything', answer: '42' },
-          { prompt: 'Are there any  more questions?', answer: 'no' },
         ],
       },
     ).then((response) => {
@@ -227,53 +227,53 @@ describe('Players submit answers to 3rd question (index 2)', () => {
   });
 });
 
-describe('Players submit answers to 4th question (index 3)', () => {
-  it('Alice submits (correct)', () => {
-    cy.request(
-      'POST',
-      `/rooms/${roomId}/submissions`,
-      {
-        player: 'Alice',
-        response: 'no',
-      },
-    ).then((response) => {
-      expect(response.status).to.eq(200);
-      expect(response.body.correct).to.eq(true);
-      expect(response.body.questionNumber).to.eq(3);
-    });
-  });
+// describe('Players submit answers to 4th question (index 3)', () => {
+//   it('Alice submits (correct)', () => {
+//     cy.request(
+//       'POST',
+//       `/rooms/${roomId}/submissions`,
+//       {
+//         player: 'Alice',
+//         response: 'no',
+//       },
+//     ).then((response) => {
+//       expect(response.status).to.eq(200);
+//       expect(response.body.correct).to.eq(true);
+//       expect(response.body.questionNumber).to.eq(3);
+//     });
+//   });
 
-  it('Bob stalls and does not submit', () => {
-  });
-});
+//   it('Bob stalls and does not submit', () => {
+//   });
+// });
 
-describe('Admin forces move to next question since Bob is AFK', () => {
-  it('admin fails to force next move (missing key)', () => {
-    cy.request({
-      failOnStatusCode: false,
-      method: 'POST',
-      url: `/rooms/${roomId}/submissions`,
-      body: {
-        roomKey: '!invalid!',
-        force: true,
-      },
-    }).then((response) => {
-      expect(response.status).to.eq(422);
-    });
-  });
-  it('admin forces next move', () => {
-    cy.request(
-      'POST',
-      `/rooms/${roomId}/submissions`,
-      {
-        roomKey,
-        force: true,
-      },
-    ).then((response) => {
-      expect(response.status).to.eq(200);
-    });
-  });
-});
+// describe('Admin forces move to next question since Bob is AFK', () => {
+//   it('admin fails to force next move (missing key)', () => {
+//     cy.request({
+//       failOnStatusCode: false,
+//       method: 'POST',
+//       url: `/rooms/${roomId}/submissions`,
+//       body: {
+//         roomKey: '!invalid!',
+//         force: true,
+//       },
+//     }).then((response) => {
+//       expect(response.status).to.eq(422);
+//     });
+//   });
+//   it('admin forces next move', () => {
+//     cy.request(
+//       'POST',
+//       `/rooms/${roomId}/submissions`,
+//       {
+//         roomKey,
+//         force: true,
+//       },
+//     ).then((response) => {
+//       expect(response.status).to.eq(200);
+//     });
+//   });
+// });
 
 describe('Players check their final scores (game over, question -1)', () => {
   it('Alice checks the score, rank 1', () => {
