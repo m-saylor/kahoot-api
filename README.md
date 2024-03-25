@@ -6,7 +6,7 @@ This REST API is written using
 - React
 - JavaScript
 - MongoDB
-- Express / Node.js
+- Express.js
 
 ## Usage
 In order to run the program, you will need to run 'npm install' to download all of the packages, then run 'npm start' to start the server, after setting it up with MongoDB.
